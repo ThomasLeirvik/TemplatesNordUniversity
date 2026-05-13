@@ -1,0 +1,28 @@
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+This package, `nordTemplates`, is distributed under the terms of the
+GNU General Public License version 3, the same licence used by its
+predecessor `moppNord`. The full text of GPL-3 is available at
+<https://www.gnu.org/licenses/gpl-3.0.txt>.
+
+A short summary of what GPL-3 allows you to do:
+
+  * Use the software for any purpose, including commercially.
+  * Study how it works and modify it.
+  * Redistribute it.
+  * Distribute modified versions.
+
+Conditions:
+
+  * Source code must be made available with any redistribution.
+  * Modifications must be released under the same licence.
+  * Changes must be documented.
+  * The licence and copyright notice must be preserved.
+
+This software is provided "as is", without warranty of any kind.
+See <https://www.gnu.org/licenses/gpl-3.0.txt> for the complete text.

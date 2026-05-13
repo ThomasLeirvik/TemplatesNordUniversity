@@ -1,0 +1,5 @@
+name: Nord — Article-based Master Thesis
+description: >
+  Article-based master thesis template (kappa + scientific article) for Nord
+  University Business School. Two bibliographies, Times New Roman, xelatex.
+create_dir: true

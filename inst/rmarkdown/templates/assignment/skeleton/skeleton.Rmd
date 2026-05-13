@@ -1,0 +1,54 @@
+---
+title: "Title of your work"
+author: "Candidate no. 1"
+course: "FIN0000"
+date: "`r format(Sys.Date(), '%d.%m.%Y')`"
+output:
+   NordUniversityTemplates::assignment:
+      toc: false
+bibliography: [library.bib]
+---
+
+<!-- To write the assignment in Norwegian, add the YAML key `lang: nb`
+     above. To turn on a table of contents, change `toc: false` to
+     `toc: true`. -->
+
+
+# Introduction
+
+\lipsum[4]
+
+See @Wooldridge2013 for a standard reference on the topic.
+
+
+| Column 1 | Column 2    |
+| -------- | ----------- |
+| Name     | Description |
+
+Table: An example table.
+
+```{r}
+knitr::kable(summary(cars), caption = "Knitr-rendered table example")
+```
+
+
+# Method
+
+\lipsum[2-5]
+
+
+# Data
+
+\begin{figure}
+\centering
+\includegraphics[width=.4\linewidth]{nordlogono}
+\caption{An example figure caption.}
+\end{figure}
+
+Example citations: @Wooldridge2013, @Dougherty2007.
+
+
+```{=latex}
+% Do not delete this — it prints the references section.
+\MyRefs
+```

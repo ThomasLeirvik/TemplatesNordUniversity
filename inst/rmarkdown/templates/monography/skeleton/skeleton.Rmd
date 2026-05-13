@@ -1,0 +1,67 @@
+---
+title: "Title of the master thesis"
+author: "Candidate no. 1"
+course: "FIN0000"
+date: "`r format(Sys.Date(), '%d.%m.%Y')`"
+output: NordUniversityTemplates::master_mono
+bibliography: library.bib
+lists: true
+appendices: true
+sammendrag: |
+   Sammendrag (norsk) — slett seksjonen om oppgaven skrives på engelsk.
+abstract: |
+   English-language abstract.
+preface: |
+   Acknowledgements / Forord.
+---
+
+<!-- To write the thesis in Norwegian, add the YAML key `lang: nb` above.   -->
+<!-- The Norwegian-language headings (Innholdsfortegnelse, Litteraturliste, -->
+<!-- Figur, Tabell, ...) will then be used automatically.                   -->
+
+
+# Introduction
+
+This is a minimal demonstration of the layout. Delete this content and start
+writing your thesis.
+
+| Column 1 | Column 2    |
+| -------- | ----------- |
+| Name     | Description |
+
+Table: An example table.
+
+```{r}
+knitr::kable(summary(cars), caption = "Knitr-rendered table example")
+```
+
+A long Lorem-ipsum paragraph to illustrate body-text setting:
+
+\lipsum[2]
+
+\begin{figure}
+\centering
+\includegraphics[width=.4\linewidth]{nordlogono}
+\caption{An example figure caption.}
+\end{figure}
+
+Example citations: @Wooldridge2013, @Dougherty2007.
+
+
+```{=latex}
+\Appendices
+```
+
+<!-- If you do not need an appendix, remove everything between this comment
+     and the `\MyRefs` block below. Otherwise, add chapter-level headings
+     (`# Appendix title`) for each appendix you want to include.            -->
+
+
+# Title of the first appendix
+
+Appendix text goes here.
+
+
+```{=latex}
+\MyRefs
+```

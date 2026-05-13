@@ -1,0 +1,5 @@
+name: Nord — Monography Master Thesis
+description: >
+  Monography-based master thesis template for Nord University Business School.
+  Times New Roman, A4, xelatex.
+create_dir: true

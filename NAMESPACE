@@ -1,0 +1,20 @@
+# Generated manually – exports for NordUniversityTemplates
+
+export(master_mono)
+export(master_article)
+export(assignment)
+
+importFrom(rmarkdown, output_format)
+importFrom(rmarkdown, knitr_options_pdf)
+importFrom(rmarkdown, pandoc_options)
+importFrom(rmarkdown, from_rmarkdown)
+importFrom(rmarkdown, pandoc_path_arg)
+importFrom(rmarkdown, includes_to_pandoc_args)
+importFrom(rmarkdown, includes)
+importFrom(rmarkdown, pandoc_available)
+importFrom(rmarkdown, pkg_file_lua)
+importFrom(rmarkdown, pdf_document)
+importFrom(tools, file_path_sans_ext)
+importFrom(xfun, with_ext)
+importFrom(utils, head)
+importFrom(stats, na.omit)
