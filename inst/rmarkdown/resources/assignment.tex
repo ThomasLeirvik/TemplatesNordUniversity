@@ -1,0 +1,218 @@
+% ---------------------------------------------------------------------------
+% nordTemplates :: Assignment / arbeidskrav (Nord University)
+% Compile with xelatex. Times New Roman with cross-platform fallback.
+% ---------------------------------------------------------------------------
+\documentclass[$if(layout)$$layout$,$endif$ 12pt]{article}
+
+\usepackage{iftex}
+
+\usepackage[hyphens]{url}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{lastpage}
+\usepackage{lineno}
+\usepackage{appendix}
+\usepackage{lipsum}             % demo "Lorem ipsum" filler used by the skeleton
+\usepackage{tikz}
+\usetikzlibrary{positioning, fit}
+\usepackage[margin=2.5cm, a4paper]{geometry}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(linenumbers)$\linenumbers$endif$
+
+% --- fonts -------------------------------------------------------------------
+\ifxetex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+  \IfFontExistsTF{Times New Roman}
+    {\setmainfont{Times New Roman}}
+    {\setmainfont{TeX Gyre Termes}}
+\else\ifluatex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+  \IfFontExistsTF{Times New Roman}
+    {\setmainfont{Times New Roman}}
+    {\setmainfont{TeX Gyre Termes}}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{newtxtext}
+  \usepackage{newtxmath}
+\fi\fi
+
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+
+% --- bibliography ------------------------------------------------------------
+% By default pandoc uses citeproc; natbib/biblatex are only loaded if the user
+% sets citation_package = "natbib" (or "biblatex") in the YAML / output format.
+$if(natbib)$
+\usepackage[$for(natbiboptions)$$natbiboptions$$sep$,$endfor$]{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$apalike$endif$}
+$endif$
+$if(biblatex)$
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+
+\usepackage[unicode,bookmarks=true,breaklinks=true,
+            colorlinks=$if(colorlinks)$true$else$false$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            pdfborder={0 0 0}]{hyperref}
+\urlstyle{same}
+
+$if(highlighting-macros)$$highlighting-macros$$endif$
+
+\setcounter{secnumdepth}{4}
+
+% --- localisation ------------------------------------------------------------
+$if(lang)$
+  \usepackage[main=$lang$]{babel}
+  \def\MainTitle{OPPGAVE}
+  \def\course{Emnekode: }
+  \def\Candit{Kandidat }
+  \def\School{Handelsh{\o}gskolen i Nord}
+  \def\clocktime{Dato: }
+  \def\Student{Navn / kandidatnr.: }
+  \def\totPages{Totalt antall sider: }
+  \renewcommand{\contentsname}{Innholdsfortegnelse}
+  \renewcommand{\listtablename}{Oversikt over tabeller}
+  \renewcommand{\listfigurename}{Oversikt over figurer}
+  \def\logoPic{\includegraphics[height=1.7cm]{nordlogono}}
+  \def\Litname{Litteraturliste}
+  \def\akn{Forord}
+  \renewcommand{\figurename}{Figur}
+  \renewcommand{\tablename}{Tabell}
+  \renewcommand{\equationautorefname}{Ligning}
+  \renewcommand{\appendixtocname}{Appendiks}
+$else$
+  \def\MainTitle{ASSIGNMENT}
+  \def\course{Course code: }
+  \def\clocktime{Date: }
+  \def\Student{Name / Candidate no.: }
+  \def\Candit{Candidate}
+  \def\School{Nord University Business School}
+  \def\totPages{Total number of pages: }
+  \def\contentsname{Table of contents}
+  \def\listtablename{List of tables}
+  \def\listfigurename{List of figures}
+  \def\logoPic{\includegraphics[height=1.65cm]{nordlogoen}}
+  \def\Litname{References}
+  \def\figurename{Figure}
+  \def\tablename{Table}
+  \def\akn{Preface}
+  \def\equationautorefname{Equation}
+  \renewcommand{\appendixtocname}{Appendices}
+$endif$
+
+% --- pandoc citeproc citations (Pandoc >= 2.11; current form for Pandoc 3.x).
+$if(csl-refs)$
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ \let\@cite@ofmt\@firstofone
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2]   % #1 hanging-ind., #2 entry spacing
+  {\begin{list}{}{%
+    \setlength{\itemindent}{0pt}%
+    \setlength{\leftmargin}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \ifodd #1
+      \setlength{\leftmargin}{\cslhangindent}%
+      \setlength{\itemindent}{-1\cslhangindent}%
+    \fi
+    \setlength{\itemsep}{#2\baselineskip}}}%
+  {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\usepackage{fancyhdr}
+\fancypagestyle{main}{%
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[C]{\iffloatpage{}{\thepage}}
+  \fancyhead[L]{}
+  \fancyhead[R]{}
+}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\renewcommand\theparagraph{}
+\renewcommand\thesubparagraph{}
+
+\usepackage{tocloft,titlesec}
+\titleformat{\paragraph}[display]
+  {\normalfont\bfseries\fillast}{{\theparagraph}}{1ex minus .1ex}{\small}
+\titlespacing{\subsubsection}{3pc}{*3}{*2}[3pc]
+
+\definecolor{nordblue}{RGB}{22, 92, 125}
+\definecolor{nordgrey}{RGB}{148, 183, 187}
+
+\def\Appendices{$if(appendices)$\newpage\appendix
+  \section*{\appendixtocname\label{app}}
+  \addappheadtotoc\renewcommand\thesection{\Alph{section}}$endif$}
+
+\def\MyRefs{\newpage\section*{\Litname}}
+
+$preamble$
+
+% =============================================================================
+\begin{document}
+\begin{titlepage}
+
+\vskip1cm
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[fill=nordblue]            (-1.5,2) rectangle (16.5,-22);
+  \node[text=white, scale=2, anchor=west] at (0,0) {\Huge\MainTitle};
+  \fill[fill=white]               (.5,-5) rectangle (18,-14);
+  \draw[color=nordgrey!45!black, dotted, very thick] (1,-6.5) -- (16,-6.5);
+  \node[anchor=west] at (1.5,-6)  {\large\course\textit{$course$}};
+  \node[anchor=west] at (7.5,-6)  {\large\Student\textit{$author$}};
+  \node[anchor=west, scale=2, text width=7cm, color=nordgrey!60!black]
+       at (1.5,-9.8) {\Large $title$};
+  \draw[color=nordgrey!45!black, very thick] (1,-12.5) -- (16,-12.5);
+  \node[anchor=west] at (1.5,-13.2) {\large\clocktime\textit{$date$}};
+  \node[anchor=west] at (7.5,-13.2) {\large\totPages\textit{\pageref{LastPage}}};
+  \node[anchor=south west] at (0,-25.5) {\logoPic};
+  \node[anchor=east, color=nordgrey!80!white] at (15.5,-25)
+       {\Large\href{https://www.nord.no}{www.nord.no}};
+\end{tikzpicture}
+\thispagestyle{empty}
+\end{titlepage}
+\newpage
+
+$if(toc)$
+\tableofcontents
+\newpage
+$endif$
+
+\pagestyle{main}
+\onehalfspacing
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+\end{document}

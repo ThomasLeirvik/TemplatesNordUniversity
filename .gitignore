@@ -24,6 +24,8 @@
 *.snm
 *.vrb
 *-blx.bib
+# ...but DO track the source LaTeX templates that ship with the package:
+!inst/rmarkdown/resources/*.tex
 
 # rmarkdown intermediate files (keep the .Rmd and the final .pdf)
 *_files/
