@@ -1,0 +1,6 @@
+name: Nord — Bachelor Thesis
+description: >
+  Bachelor thesis template for Nord University Business School. Same layout
+  as the monography master thesis, but with the bachelor-thesis Nord green
+  on the title page. Times New Roman, A4, xelatex.
+create_dir: true

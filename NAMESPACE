@@ -3,6 +3,7 @@
 export(master_mono)
 export(master_article)
 export(assignment)
+export(bachelor_thesis)
 
 importFrom(rmarkdown, output_format)
 importFrom(rmarkdown, knitr_options_pdf)

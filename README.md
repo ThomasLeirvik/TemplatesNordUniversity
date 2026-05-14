@@ -1,6 +1,6 @@
 # NordUniversityTemplates
 
-R Markdown / `bookdown` templates for writing **assignments**, **monography master theses**, and **article-based master theses** at **Nord University Business School**, with a Nord-branded title page and a layout that follows the official requirements.
+R Markdown / `bookdown` templates for writing **assignments**, **bachelor theses**, **monography master theses**, and **article-based master theses** at **Nord University Business School**, with a Nord-branded title page and a layout that follows the official requirements.
 
 This package is the modern successor to the older `moppNord` package. It fixes the two long-standing issues that have caused trouble for students:
 
@@ -52,6 +52,7 @@ If you are on a system without Times New Roman installed (most clean Linux conta
 
 1. *File → New File → R Markdown… → From Template*
 2. Choose one of:
+   - **Nord — Bachelor Thesis**
    - **Nord — Monography Master Thesis**
    - **Nord — Article-based Master Thesis**
    - **Nord — Assignment / Arbeidskrav**
@@ -105,6 +106,7 @@ NordUniversityTemplates/
 ├── R/
 │   ├── master_mono.R            # monography output format
 │   ├── master_article.R         # article-based output format
+│   ├── bachelor_thesis.R        # bachelor thesis output format
 │   ├── assignment.R             # assignment / arbeidskrav format
 │   └── utils.R                  # shared internal helpers
 └── inst/
@@ -112,12 +114,14 @@ NordUniversityTemplates/
         ├── lua/
         │   └── multiple-bibliographies.lua
         ├── resources/
-        │   ├── monography.tex   # LaTeX template (book class)
-        │   ├── article.tex      # LaTeX template (book class, dual bib)
+        │   ├── monography.tex   # LaTeX template (book class, Nord teal)
+        │   ├── article.tex      # LaTeX template (book class, dual bib, Nord teal)
+        │   ├── bachelor.tex     # LaTeX template (book class, Nord green)
         │   └── assignment.tex   # LaTeX template (article class)
         └── templates/
             ├── monography/{template.yaml, skeleton/...}
             ├── article/   {template.yaml, skeleton/...}
+            ├── bachelor/  {template.yaml, skeleton/...}
             └── assignment/{template.yaml, skeleton/...}
 ```
 
