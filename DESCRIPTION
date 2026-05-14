@@ -1,6 +1,6 @@
 Package: NordUniversityTemplates
 Title: R Markdown Templates for Theses and Assignments at Nord University
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person("Nord University", "Business School", role = c("cph")),
     person("Thomas", "Leirvik", email = "thomas.leirvik@nord.no", role = c("aut", "cre")))

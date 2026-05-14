@@ -27,6 +27,24 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+% Pandoc >= 3.x wraps every image in \pandocbounded{...} to keep it inside
+% the text block. Older custom templates (like this one) need to define the
+% macro themselves; the definition below is the canonical Pandoc one.
+\makeatletter
+\@ifundefined{pandocbounded}{%
+  \newsavebox\pandoc@box
+  \newcommand*\pandocbounded[1]{%
+    \sbox\pandoc@box{#1}%
+    \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+    \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+    \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi
+    \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+    \else\usebox{\pandoc@box}%
+    \fi%
+  }%
+}{}
+\makeatother
+
 $if(linenumbers)$\linenumbers$endif$
 
 % --- fonts: Times New Roman (approved) ---------------------------------------
